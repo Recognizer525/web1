@@ -1,6 +1,13 @@
 
 <!-- saved from url=(0067)file:///C:/Users/asus/WebProject/blog/templates/blog/post_list.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>The blog</title></head><body>
-    <p>Hi there!</p>
-    <p>It works!</p>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>My super blog</title></head><body>
+    <div><h1><a ref="/">На главную</a></h1></div>
+    {% for post in posts %}
+    <div>
+        <p>Дата публикации: {{post.published_date}}</p>
+        <h1><a href="">{{post.title}}</a></h1>
+        <p>{{post.text|linebreaksbr}}</p>
+    </div>
+    {% endfor %}
+    
 </body></html>
