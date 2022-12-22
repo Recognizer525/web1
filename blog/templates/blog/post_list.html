@@ -1,13 +1,23 @@
-
-<!-- saved from url=(0067)file:///C:/Users/asus/WebProject/blog/templates/blog/post_list.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251"><title>My super blog</title></head><body>
-    <div><h1><a ref="/">На главную</a></h1></div>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>My super blog</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/theme.css'%}">
+</head>
+<body>
+<div>
+    <h1><a href="/">На главную</a></h1>
+</div>
+<div>
     {% for post in posts %}
-    <div>
-        <p>Дата публикации: {{post.published_date}}</p>
-        <h1><a href="">{{post.title}}</a></h1>
-        <p>{{post.text|linebreaksbr}}</p>
-    </div>
+    <p>Дата публикации:   {{post.published_date}}</p>
+    <h2><a href="#">{{post.title}}</a></h2>
+    <p>{{post.text|linebreaksbr}}</p>
     {% endfor %}
-    
-</body></html>
+</div>
+</body>
+</html>
