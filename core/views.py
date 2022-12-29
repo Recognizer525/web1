@@ -43,7 +43,7 @@ class BlogPostViewSet(ActionSerializedViewSet):
         queryset = self.queryset
         author = self.request.query_params.get('author', None)
         if author:
-            queryset = queryset.filter(author_username=author)
+            queryset = queryset.filter(author__username=author)
         return queryset
 
     @action(detail=False)
@@ -51,7 +51,7 @@ class BlogPostViewSet(ActionSerializedViewSet):
         published_posts = Post.published.all()
         page = self.paginate_queryset(published_posts)
         if page is not None:
-            serializers = self.get_serializer(page, many=True)
+            serializer = self.get_serializer(page, many=True)
             return self.get_paginated_response(serializers.data)
 
         serializer = self.get_serializer(published_posts, many=True)

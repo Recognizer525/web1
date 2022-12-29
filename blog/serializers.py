@@ -3,7 +3,10 @@ from rest_framework import serializers
 from blog.models import Comment, Post
 from django import forms
 
-
+class CommentSerializer(serializers.Serializer):
+    text=serializers.CharField(max_length=200)
+    created_date=serializers.DateTimeField()
+    
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
@@ -36,5 +39,5 @@ class BlogPostDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ('author', 'title', 'text', 'published_date',
+        fields = ('author', 'title', 'text', 'published_date', 'comments',
                   'comments_count')
